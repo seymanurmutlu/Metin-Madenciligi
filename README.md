@@ -1,1 +1,1 @@
-# Metin-Madencili-i
+# Metin-Madenciligi
