@@ -1,0 +1,35 @@
+===== Regular Expressions Kısa Kullanım Kılavuzu =====
+
+Online regex tester and debugger : [[https://regex101.com/]]
+
+image::regex-deneme-ss.jpg[]
+
+=== Meta-karakterler : Karakterlerin karşılıkları ===
+  ***.** : Varsayılan modda bu, yeni satır dışında herhangi bir karakterle eşleşir.
+  ***^** : String başlangıcı ile eşleşir.
+  ***$** : String sonuyla veya dizginin sonundaki yeni satırdan hemen önce eşleşir.
+  ***[]** : [] içerisindeki karakterlerden biriyle eşleşir.
+  ***[a-z]** : a,b,c...z arasındaki karakterlerden biriyle eşleşir.
+  ***[A-Z]** : A,B,C...Z arasındaki karakterlerden biriyle eşleşir.
+  ***[^abc]** : a,b veya c olmayan karakterlerin biriyle eşleşir.
+  ***a|b** : a veya b ile eşleşir.
+  ***()** : operatörler için kapsam belirler.
+  ***\** : özel karaketlerden önce kaçış karakteri olarak kullanılır. \t, \n, \b gibi
+
+=== Meta-karakterler : Karakter sembolleri ===
+  * **\b** : Kelime sınırı (word **b**oundary)
+  * **\d** :  Rakamlarla (**d**igit) eşleşir, [0-9]'a eştir.
+  * **\D** : Rakam olmayanlarla eşleşir, [^0-9]'a eştir.
+  * **\s** : Herhangi bir boşluk karakteriyle (white **s**pace) eşleşir, [\t\n\r\f\v]'a eştir.
+  * **\S** : Boşluk olmayan herhangi bir karakterle eşleşir, [^\t\n\r\f\v]'a eştir.
+  * **\w** : Herhangi bir sözcük karakteriyle (**w**ord) eşleşir,[a-zA-Z0-9_]'a eştir.
+  * **\W** : Sözcük olmayan herhangi bir karakterle eşleşir, [^a-zA-Z0-9_]'a eştir.
+
+=== Meta-karakterler : Tekrar Sayısı ===
+  * **?** : opsiyonel (0 veya 1 kez) kullanım
+  * **+** : en az bir kez veya daha fazla kullanım
+  * ***** : hiç olmayabilir veya birden fazla kullanım
+  * **{n}** : tam olarak n defa tekrar etmesi, n >= 0
+  * **{n,}** : en az n kadar tekrar etmesi
+  * **{,n}** : en fazla n kadar tekrar etmesi
+  * **{m,n**} : en az m, en fazla n kadar tekrar etmesi

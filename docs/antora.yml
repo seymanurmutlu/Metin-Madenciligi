@@ -1,0 +1,6 @@
+name: Metin Madenciliği
+title: Metin Madenciliği Çalışmaları
+start_page: ROOT:python-ile-metin-calismak.adoc
+version: 2.3
+nav:
+- modules/ROOT/nav.adoc

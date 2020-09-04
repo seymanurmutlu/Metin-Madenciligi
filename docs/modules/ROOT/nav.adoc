@@ -1,0 +1,2 @@
+* xref:python-ile-metin-calismak.adoc[Python'da Metin İle Çalışmak]
+* xref:regex-cheat-sheet.adoc[Regex Kullanım Kılavuzu - Kısa]
