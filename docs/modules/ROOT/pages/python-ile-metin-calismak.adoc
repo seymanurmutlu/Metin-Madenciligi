@@ -52,13 +52,13 @@ Benzersiz kelimeleri 'set()' kullanarak bulmak
 {'kalkar,', 'sarkar', 'kalkar', 'kartal', 'dal'}
 </code>
 == 4.Serbest metin işleme ==
-<code python>
+'
 >>> text5 = 'İdari Yargının Etkinliğinin Artırılması ve Danıştay’ın Kurumsal Kapasitesinin Güçlendirilmesi Projesi’nin 3. Yürütme Kurulu toplantısı Sn. Hakan Öztatar’ın başkanlığında 19/06/2020 tarihinde video konferans yoluyla gerçekleştirilmiştir #ABProjeleri #OrtakGelecegimiz @ABBaskanligi https://twitter.com/higm_adalet'
 >>> text6 = text5.split(' ')
 >>>
 >>> text6
 ['İdari', 'Yargının', 'Etkinliğinin', 'Artırılması', 've', 'Danıştay’ın', 'Kurumsal', 'Kapasitesinin', 'Güçlendirilmesi', 'Projesi’nin', '3.', 'Yürütme', 'Kurulu', 'toplantısı', 'Sn.', 'Hakan', 'Öztatar’ın', 'başkanlığında', '19/06/2020', 'tarihinde', 'video', 'konferans', 'yoluyla', 'gerçekleştirilmiştir', '#ABProjeleri', '#OrtakGelecegimiz', '@ABBaskanligi', 'https://twitter.com/higm_adalet']
-</code>
+'
 
 Hashtagleri bulmak
 
