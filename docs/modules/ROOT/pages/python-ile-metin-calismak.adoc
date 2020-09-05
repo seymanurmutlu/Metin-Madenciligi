@@ -1,11 +1,11 @@
 ===== Python'da Metin ile Çalışmak =====
 
 == 1.Metin uzunluğu bulmak ==
-<code python>
+....
 >>> text1 = "Yurt dışında yaşayan vatandaşlarımız, daha önce zahmetli ve uzun süren apostil işlemlerini internet üzerinden çok kısa sürede yapabiliyor."
 >>> len(text1)
 138
-</code>
+....
 
 == 2.Metindeki kelime sayısını bulmak ==
 <code python>
