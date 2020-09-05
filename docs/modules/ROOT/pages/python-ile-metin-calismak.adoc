@@ -9,6 +9,7 @@
 ....
 
 == 2.Metindeki kelime sayısını bulmak ==
+[source,python] 
 ....
 >>> text2 = text1.split(' ')
 >>> len(text2)
@@ -19,25 +20,28 @@
 
 == 3.Belirli kelimeleri bulma ===
 text2'de 3 harften uzun kelimeleri bulmak
+[source,python] 
 ....
 >>> [w for w in text2 if len(w) > 3]
 ['Yurt', 'dışında', 'yaşayan', 'vatandaşlarımız,', 'daha', 'önce', 'zahmetli', 'uzun', 'süren', 'apostil', 'işlemlerini', 'internet', 'üzerinden', 'kısa', 'sürede', 'yapabiliyor.']
 ....
 
 text2'de büyük harfle başlayan kelimeleri bulmak
+[source,python] 
 ....
 >>> [w for w in text2 if w.istitle()]
 ['Yurt']
 ....
 
 text2'de e ile biten kelimeleri bulmak
+[source,python] 
 ....
 >>> [w for w in text2 if w.endswith('e')]
 ['önce', 've', 'sürede']
 ....
 
 Benzersiz kelimeleri 'set()' kullanarak bulmak
-
+[source,python] 
 ....
 >>> text3 = "Dal sarkar kartal kalkar, kartal kalkar dal sarkar"
 >>> text4 = text3.split(' ')
@@ -54,6 +58,7 @@ Benzersiz kelimeleri 'set()' kullanarak bulmak
 ....
 
 == 4.Serbest metin işleme ==
+[source,python] 
 ....
 >>> text5 = 'İdari Yargının Etkinliğinin Artırılması ve Danıştay’ın Kurumsal Kapasitesinin Güçlendirilmesi Projesi’nin 3. Yürütme Kurulu toplantısı Sn. Hakan Öztatar’ın başkanlığında 19/06/2020 tarihinde video konferans yoluyla gerçekleştirilmiştir #ABProjeleri #OrtakGelecegimiz @ABBaskanligi https://twitter.com/higm_adalet'
 >>> text6 = text5.split(' ')
@@ -63,21 +68,21 @@ Benzersiz kelimeleri 'set()' kullanarak bulmak
 ....
 
 Hashtagleri bulmak
-
+[source,python] 
 ....
 >>> [w for w in text6 if w.startswith('#')]
 ['#ABProjeleri', '#OrtakGelecegimiz']
 ....
 
 Bahsetmeleri(callout) bulmak
-
+[source,python] 
 ....
 >>> [w for w in text6 if w.startswith('@')]
 ['@ABBaskanligi']
 ....
 
 == 5.Regular Expressionları(regex) kullanarak metin işleme ==
-
+[source,python] 
 ....
 >>> text7 = "Avrupa Bölgeler ve Şehirler Haftası bu yıl ilk kez pandemi nedeniyle dijital olarak düzenlenecek. 5-22 Ekim 2020 tarihlerindeki etkinliklere 27 Eylül 2020’ye kadar kayıt yaptırabilirsiniz. #EURegionsWeek #interreg #cbc #cbcbgtr #cbcbsb #enicbc #solidaritycorps #H2020 @EUgreendeal"
 >>> text8 = text7.split(' ')
@@ -93,6 +98,7 @@ Regular expressionları kullanarak daha gelişmiş string parse etme işlemleri 
   * Sayılar (`'0-9'`)
   * veya alt tire (`'_'`)
 
+[source,python] 
 ....
 import re
 >>> [w for w in text8 if re.search('@[A-Za-z0-9_]+', w)]
