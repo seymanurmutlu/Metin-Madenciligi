@@ -1,6 +1,6 @@
 ===== Regular Expressions Kısa Kullanım Kılavuzu =====
 
-Online regex tester and debugger : [[https://regex101.com/]]
+Online regex tester and debugger : [https://regex101.com/]
 
 image::regex-deneme-ss.jpg[]
 
