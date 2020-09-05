@@ -1,6 +1,7 @@
 ===== Python'da Metin ile Çalışmak =====
 
 == 1.Metin uzunluğu bulmak ==
+[source,python] 
 ....
 >>> text1 = "Yurt dışında yaşayan vatandaşlarımız, daha önce zahmetli ve uzun süren apostil işlemlerini internet üzerinden çok kısa sürede yapabiliyor."
 >>> len(text1)
