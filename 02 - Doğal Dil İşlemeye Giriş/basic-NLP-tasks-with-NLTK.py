@@ -60,12 +60,12 @@ porter = nltk.PorterStemmer()
 [print(porter.stem(t)) for t in words1]
 
 #Turcke stemming için snowballstemmer'ı kullandım ama başarılı bir sonuca ulaşamadım.
-#inputTr = "Dizi diziler dizdi"
-#wordsTr = inputTr.lower().split(' ')
-#print(wordsTr)
+inputTr = "Dizi diziler dizdi"
+wordsTr = inputTr.lower().split(' ')
+print(wordsTr)
 
-#turkStem=TurkishStemmer()
-#[print(turkStem.stemWord(t)) for t in wordsTr]
+turkStem=TurkishStemmer()
+[print(turkStem.stemWord(t)) for t in wordsTr]
 
 #LEMMATINAZITON
 #Lemmatizasyon, ortaya çıkan kelimelerin gerçekten anlamlı olmasını istediğiniz yerdir.
