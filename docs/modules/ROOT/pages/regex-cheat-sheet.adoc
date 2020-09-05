@@ -2,7 +2,7 @@
 
 https://regex101.com/:[Online regex tester and debugger]
 
-image::regex-deneme-ss.jpg[]
+image::../images/regex-deneme-ss.jpg[]
 
 === Meta-karakterler : Karakterlerin karşılıkları ===
   * **.** : Varsayılan modda bu, yeni satır dışında herhangi bir karakterle eşleşir.
