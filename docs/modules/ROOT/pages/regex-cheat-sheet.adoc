@@ -5,9 +5,9 @@ Online regex tester and debugger : [[https://regex101.com/]]
 image::regex-deneme-ss.jpg[]
 
 === Meta-karakterler : Karakterlerin karşılıkları ===
-  ***.** : Varsayılan modda bu, yeni satır dışında herhangi bir karakterle eşleşir.
-  ***^** : String başlangıcı ile eşleşir.
-  ***$** : String sonuyla veya dizginin sonundaki yeni satırdan hemen önce eşleşir.
+  * **.** : Varsayılan modda bu, yeni satır dışında herhangi bir karakterle eşleşir.
+  * **^** : String başlangıcı ile eşleşir.
+  * **$** : String sonuyla veya dizginin sonundaki yeni satırdan hemen önce eşleşir.
   ***[]** : [] içerisindeki karakterlerden biriyle eşleşir.
   ***[a-z]** : a,b,c...z arasındaki karakterlerden biriyle eşleşir.
   ***[A-Z]** : A,B,C...Z arasındaki karakterlerden biriyle eşleşir.
