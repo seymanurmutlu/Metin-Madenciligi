@@ -1,1 +1,133 @@
 ===== NLTK ile Basit Görevler Gerçekleştirmek =====
+
+==== KELİME DAĞARCIĞI SAYMA ====
+
+Örnek kütüphanedeki text7'yi bas.
+[source,python]
+....
+print(text7)
+....
+[source,python]
+....
+>>> <Text: Wall Street Journal>
+....
+
+Örnek kütüphanedeki sent7'yi bas.
+[source,python]
+....
+print(sent7)
+....
+
+Sent7'nin kelime sayısını bas. Noktalama işaretleri de birer kelime olarak sayıldığını görürüz.
+[source,python]
+....
+print(len(sent7))
+....
+
+
+Şimdi daha önce baktığımız Wall Street Journal yani text7'nin kelime sayısını bas.
+[source,python]
+....
+print(len(text7))
+....
+text7 içerisindeki benzersiz kelimelerin sayısını bas.
+[source,python]
+....
+print(len(set(text7)))
+....
+Benzersiz kelimeler listesindeki ilk 10 kelimeyi bas.
+[source,python]
+....
+print(list(set(text7))[:10])
+....
+
+==== KELİMELERİN SIKLIĞI ====
+#Frequency distributon
+[source,python]
+....
+dist = FreqDist(text7)
+print(len(dist))
+....
+[source,python]
+....
+vocab1 = dist.keys()
+print(list(vocab1)[:10])
+print(dist['four'])
+....
+[source,python]
+....
+freqwords = [w for w in vocab1 if len(w) > 5 and dist[w] > 100]
+print(freqwords)
+....
+
+==== Normalleştirme ve Kelimenin Kökünü Bulma ====
+#Normalleştirme, bir kelimeyi aynı şekilde görünmesi için dönüştürmeniz veya çok farklı görünmelerine rağmen saymanız gereken zamandır.
+#Örneğin, aynı kelimenin geçtiği farklı biçimler olabilir.
+
+[source,python]
+....
+input1 = "List listed lists listing listings"
+words1 = input1.lower().split(' ')
+print(words1)
+....
+
+#Stemming, kelimenin kökünü bulmak anlamına gelir.
+#Stemming için bir sürü algoritma kullanabiliriz, şu an oldukça populer ve kullanımı yüksek olan
+#porter stemmer'ı kullanacağız.
+[source,python]
+....
+porter = nltk.PorterStemmer()
+[print(porter.stem(t)) for t in words1]
+....
+
+#Turcke stemming için snowballstemmer'ı kullandım ama başarılı bir sonuca ulaşamadım.
+[source,python]
+....
+inputTr = "Dizi diziler dizdi"
+wordsTr = inputTr.lower().split(' ')
+print(wordsTr)
+....
+
+[source,python]
+....
+turkStem=TurkishStemmer()
+[print(turkStem.stemWord(t)) for t in wordsTr]
+....
+
+==== LEMMATINAZITON ====
+#Lemmatizasyon, ortaya çıkan kelimelerin gerçekten anlamlı olmasını istediğiniz yerdir.
+#Anlamlı kelimeler çıkartan stemming işlemi
+[source,python]
+....
+udhr = nltk.corpus.udhr.words('English-Latin1')
+print(udhr[:20])
+....
+
+
+#Lemmatization devam
+[source,python]
+....
+[print(porter.stem(t)) for t in udhr[:20]]
+....
+
+[source,python]
+....
+WNlemma = nltk.WordNetLemmatizer()
+[WNlemma.lemmatize(t) for t in udhr[:20]]
+....
+
+==== TOKENIZATION ====
+[source,python]
+....
+text11 = "Children shouldn't drink a sugary drink before bed."
+text11.split(' ')
+print(nltk.word_tokenize(text11))
+....
+
+[source,python]
+....
+text12 = "This is the first sentence. A gallon of milk in the U.S. costs $2.99. Is this the third sentence? Yes, it is!"
+sentences = nltk.sent_tokenize(text12)
+print(len(sentences))
+print(sentences)
+....
