@@ -1,0 +1,1 @@
+===== NLTK ile Basit Görevler Gerçekleştirmek =====
