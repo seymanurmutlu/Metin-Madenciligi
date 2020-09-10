@@ -1,0 +1,124 @@
+===== Python'da Metin ile Çalışmak =====
+https://pypi.org/project/trnlp/[trnlp] kurulumu
+[source]
+....
+$ pip install trnlp
+....
+
+[source,python]
+....
+text1 = "Uluslararası hukuk bir devletin diğer bir devlet veya devletlerle ve yahut bir devletin uluslararası örgütlerle ilişkilerini düzenleyen kamu hukuku dalıdır."
+text2 = text1.split(" ")
+
+print(text1)
+>>> Uluslararası hukuk bir devletin diğer bir devlet veya devletlerle ve yahut bir devletin uluslararası örgütlerle ilişkilerini düzenleyen kamu hukuku dalıdır.
+
+print("text1'in uzunluğu : ",len(text1),"\n")
+>>> 156
+
+print("text1 kelime sayısı: ",len(text2),"\n")
+>>> 20
+
+print("text1 benzersiz kelimelerin sayısı: ",len(set(text2)),"\n")
+>>> 17
+....
+
+[source,python]
+....
+print("text2'deki benzersiz kelimelerin 10'unu bas",list(set(text2))[:10],"\n") #benzersiz kelimelerden 10 kelimeyi bas.
+
+>>> ['düzenleyen', 'devlet', 'hukuk', 'diğer', 've', 'Uluslararası', 'ilişkilerini', 'bir', 'kamu', 'hukuku']
+....
+==== Kelimenin Kökünü Bulma ====
+
+TrnlpWord klasından bir obje türetilir
+[source,python]
+....
+obj = TrnlpWord()
+....
+
+setword(str) fonksiyonu ile yeni kelime analizi yapılır. Cümledeki tüm kelimelerin kök / gövde ve eklerini bulalım:
+[source,python]
+....
+for t in text2:
+    obj.setword(t)
+    print(obj)
+>>> uluslararası(sıfat)
+    hukuk(isim)
+    bir(isim,sıfat,zarf)
+    devlet(isim)+in{İe2t}[1_6]
+    diğer(sıfat)
+    bir(isim,sıfat,zarf)
+    devlet(isim)
+    veya(bağlaç)
+    devlet(isim)+ler{Çe}[1_1]+le{HeVas}[1_26]
+    ve(bağlaç)
+    yahut(bağlaç)
+    bir(isim,sıfat,zarf)
+    devlet(isim)+in{İe2t}[1_6]
+    uluslararası(sıfat)
+    örgüt(isim)+ler{Çe}[1_1]+le{HeVas}[1_26]
+    ilişki(isim)+ler{Çe}[1_1]+in{İe2t}[1_6]+i{HeBlrt}[1_14]
+    düzen(isim)+le{İf}[5_2]+yen{Fs}[8_1]
+    kamu(isim,sıfat)
+    hukuk(isim)+u{İe3t}[1_11]
+....
+
+==== STEMMING ====
+get_stem, kelimenin bulunan muhtemel gövdesini döndürür.
+[source,python]
+....
+for t in text2:
+    obj.setword(t)
+    print(obj.get_stem)
+
+>>> uluslararası
+    hukuk
+    bir
+    devlet
+    diğer
+    bir
+    devlet
+    veya
+    devlet
+    ve
+    yahut
+    bir
+    devlet
+    uluslararası
+    örgüt
+    ilişki
+    düzenleyen
+    kamu
+....
+==== LEMMATINAZITON ====
+
+==== TOKENIZATION ====
+[source,python]
+....
+text3 = """Saçma ve Gereksiz Bir Yazı.
+    Bakkaldan 5 TL'lik 2 çikola-
+    ta al. 12.02.2018 tarihinde saat tam 15:45'te yap-
+    malıyız bu işi. Tamam mı? Benimle esatmahmutbayol@gmail.com
+    adresinden iletişime geçebilirsin. Yarışta 1. oldu. Doç. Dr.
+    Esat Bayol'un(Böyle bir ünvanım yok!) yanından geliyorum.
+    12 p.m. mi yoksa 12 a.m. mi? 100 milyon insan gelmiş! www.deneme.com.tr
+    adresinden sitemizi inceleyebilirsin. 24 Eylül 2018 Pazartesi günü ge-
+    lecekmiş. 19 Mayıs'ı coşkuyla kutladık."""
+....
+whitespace_token(), metni boşluklardan parçalar.
+[source,python]
+....
+print("Boşluklardan parçala :",whitespace_token(text3),"\n")
+
+>>> ['Saçma', 've', 'Gereksiz', 'Bir', 'Yazı.\n', 'Bakkaldan', '5', "TL'lik", '2', 'çikola-\n', 'ta', 'al.', '12.02.2018', 'tarihinde', 'saat', 'tam', "15:45'te", 'yap-\n', 'malıyız', 'bu', 'işi.', 'Tamam', 'mı?', 'Benimle', 'esatmahmutbayol@gmail.com', '\n', 'adresinden', 'iletişime', 'geçebilirsin.', 'Yarışta', '1.', 'oldu.', 'Doç.', 'Dr.', '\n', 'Esat', "Bayol'un(Böyle", 'bir', 'ünvanım', 'yok!)', 'yanından', 'geliyorum.\n', '12', 'p.m.', 'mi', 'yoksa', '12', 'a.m.', 'mi?', '100', 'milyon', 'insan', 'gelmiş!', 'www.deneme.com.tr', '\n', 'adresinden', 'sitemizi', 'inceleyebilirsin.', '24', 'Eylül', '2018', 'Pazartesi', 'günü', 'ge-\n', 'lecekmiş.', '19', "Mayıs'ı", 'coşkuyla', 'kutladık.']
+....
+phrasetoken, metni cümlelere parçalar.
+[source,python]
+....
+obj = TrnlpToken()
+obj.settext(text3)
+print("Cümlelere ayır :", obj.phrasetoken)
+
+>>> ['Saçma ve Gereksiz Bir Yazı.', "Bakkaldan 5 TL'lik 2 çikolata al.", "12.02.2018 tarihinde saat tam 15:45'te yapmalıyız bu işi.", 'Tamam mı?', 'Benimle esatmahmutbayol@gmail.com adresinden iletişime geçebilirsin.', 'Yarışta 1. oldu.', "Doç. Dr. Esat Bayol'un(Böyle bir ünvanım yok!) yanından geliyorum.", '12 p.m. mi yoksa 12 a.m. mi?', '100 milyon insan gelmiş!', 'www.deneme.com.tr adresinden sitemizi inceleyebilirsin.', '24 Eylül 2018 Pazartesi günü gelecekmiş.', "19 Mayıs'ı coşkuyla kutladık."]
+....

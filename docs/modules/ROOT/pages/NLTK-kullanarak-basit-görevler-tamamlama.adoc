@@ -2,118 +2,221 @@
 
 ==== KELİME DAĞARCIĞI SAYMA ====
 
-Örnek kütüphanedeki text7'yi bas.
+
 [source,python]
 ....
-print(text7)
-....
-[source,python]
-....
+print(text7) #Örnek kütüphanedeki text7'yi bas.
+
 >>> <Text: Wall Street Journal>
 ....
 
-Örnek kütüphanedeki sent7'yi bas.
+
 [source,python]
 ....
-print(sent7)
+print(sent7) #Örnek kütüphanedeki sent7'yi bas.
+
+>>> ['Pierre',
+ 'Vinken',
+ ',',
+ '61',
+ 'years',
+ 'old',
+ ',',
+ 'will',
+ 'join',
+ 'the',
+ 'board',
+ 'as',
+ 'a',
+ 'nonexecutive',
+ 'director',
+ 'Nov.',
+ '29',
+ '.']
 ....
 
-Sent7'nin kelime sayısını bas. Noktalama işaretleri de birer kelime olarak sayıldığını görürüz.
 [source,python]
 ....
-print(len(sent7))
+print(len(sent7)) #Sent7'nin kelime sayısını bas. Noktalama işaretleri de birer kelime olarak sayıldığını görürüz.
+
+>>> 18
 ....
 
 
-Şimdi daha önce baktığımız Wall Street Journal yani text7'nin kelime sayısını bas.
+
 [source,python]
 ....
-print(len(text7))
+print(len(text7)) #Daha önce baktığımız Wall Street Journal yani text7'nin kelime sayısını bas.
+
+>>> 100676
 ....
-text7 içerisindeki benzersiz kelimelerin sayısını bas.
+
 [source,python]
 ....
-print(len(set(text7)))
+print(len(set(text7))) #text7 içerisindeki benzersiz kelimelerin sayısını bas.
+
+>>>12408
 ....
-Benzersiz kelimeler listesindeki ilk 10 kelimeyi bas.
 [source,python]
 ....
-print(list(set(text7))[:10])
+print(list(set(text7))[:10]) #Benzersiz kelimelerden 10 tane kelimeyi bas.
+
+>>>['bottom',
+ 'Richmond',
+ 'tension',
+ 'limits',
+ 'Wedtech',
+ 'most',
+ 'boost',
+ '143.80',
+ 'Dale',
+ 'refunded']
 ....
 
 ==== KELİMELERİN SIKLIĞI ====
-#Frequency distributon
+
 [source,python]
 ....
-dist = FreqDist(text7)
+dist = FreqDist(text7) #Frequency distributon
 print(len(dist))
+
+>>> 12408
 ....
 [source,python]
 ....
 vocab1 = dist.keys()
 print(list(vocab1)[:10])
-print(dist['four'])
+
+>>> ['Pierre', 'Vinken', ',', '61', 'years', 'old', 'will', 'join', 'the', 'board']
 ....
+
+[source,python]
+....
+print(dist['four'])
+
+>>> 20
+....
+
 [source,python]
 ....
 freqwords = [w for w in vocab1 if len(w) > 5 and dist[w] > 100]
 print(freqwords)
+
+>>> ['billion',
+ 'company',
+ 'president',
+ 'because',
+ 'market',
+ 'million',
+ 'shares',
+ 'trading',
+ 'program']
 ....
 
 ==== Normalleştirme ve Kelimenin Kökünü Bulma ====
-#Normalleştirme, bir kelimeyi aynı şekilde görünmesi için dönüştürmeniz veya çok farklı görünmelerine rağmen saymanız gereken zamandır.
-#Örneğin, aynı kelimenin geçtiği farklı biçimler olabilir.
+Normalleştirme, bir kelimeyi aynı şekilde görünmesi için dönüştürmeniz veya çok farklı görünmelerine rağmen saymanız gereken zamandır.
+Örneğin, aynı kelimenin geçtiği farklı biçimler olabilir.
 
 [source,python]
 ....
 input1 = "List listed lists listing listings"
 words1 = input1.lower().split(' ')
 print(words1)
+
+>>> ['list', 'listed', 'lists', 'listing', 'listings']
 ....
 
-#Stemming, kelimenin kökünü bulmak anlamına gelir.
-#Stemming için bir sürü algoritma kullanabiliriz, şu an oldukça populer ve kullanımı yüksek olan
-#porter stemmer'ı kullanacağız.
+Stemming, kelimenin kökünü bulmak anlamına gelir. Stemming için bir sürü algoritma kullanabiliriz, şu an oldukça populer ve kullanımı yüksek olan porter stemmer'ı kullanacağız.
+
 [source,python]
 ....
 porter = nltk.PorterStemmer()
 [print(porter.stem(t)) for t in words1]
-....
 
-#Turcke stemming için snowballstemmer'ı kullandım ama başarılı bir sonuca ulaşamadım.
-[source,python]
-....
-inputTr = "Dizi diziler dizdi"
-wordsTr = inputTr.lower().split(' ')
-print(wordsTr)
-....
-
-[source,python]
-....
-turkStem=TurkishStemmer()
-[print(turkStem.stemWord(t)) for t in wordsTr]
+>>> ['list', 'list', 'list', 'list', 'list']
 ....
 
 ==== LEMMATINAZITON ====
-#Lemmatizasyon, ortaya çıkan kelimelerin gerçekten anlamlı olmasını istediğiniz yerdir.
-#Anlamlı kelimeler çıkartan stemming işlemi
+Lemmatizasyon, ortaya çıkan kelimelerin gerçekten anlamlı olmasını istediğiniz yerdir.
+
 [source,python]
 ....
 udhr = nltk.corpus.udhr.words('English-Latin1')
 print(udhr[:20])
+
+>>> ['Universal',
+ 'Declaration',
+ 'of',
+ 'Human',
+ 'Rights',
+ 'Preamble',
+ 'Whereas',
+ 'recognition',
+ 'of',
+ 'the',
+ 'inherent',
+ 'dignity',
+ 'and',
+ 'of',
+ 'the',
+ 'equal',
+ 'and',
+ 'inalienable',
+ 'rights',
+ 'of']
 ....
 
-
-#Lemmatization devam
 [source,python]
 ....
 [print(porter.stem(t)) for t in udhr[:20]]
+
+>>> ['univers',
+ 'declar',
+ 'of',
+ 'human',
+ 'right',
+ 'preambl',
+ 'wherea',
+ 'recognit',
+ 'of',
+ 'the',
+ 'inher',
+ 'digniti',
+ 'and',
+ 'of',
+ 'the',
+ 'equal',
+ 'and',
+ 'inalien',
+ 'right',
+ 'of']
 ....
 
 [source,python]
 ....
 WNlemma = nltk.WordNetLemmatizer()
 [WNlemma.lemmatize(t) for t in udhr[:20]]
+
+>>> ['Universal',
+ 'Declaration',
+ 'of',
+ 'Human',
+ 'Rights',
+ 'Preamble',
+ 'Whereas',
+ 'recognition',
+ 'of',
+ 'the',
+ 'inherent',
+ 'dignity',
+ 'and',
+ 'of',
+ 'the',
+ 'equal',
+ 'and',
+ 'inalienable',
+ 'right',
+ 'of']
 ....
 
 ==== TOKENIZATION ====
@@ -122,12 +225,21 @@ WNlemma = nltk.WordNetLemmatizer()
 text11 = "Children shouldn't drink a sugary drink before bed."
 text11.split(' ')
 print(nltk.word_tokenize(text11))
+
+>>> ['Children', "shouldn't", 'drink', 'a', 'sugary', 'drink', 'before', 'bed.']
 ....
 
 [source,python]
 ....
 text12 = "This is the first sentence. A gallon of milk in the U.S. costs $2.99. Is this the third sentence? Yes, it is!"
 sentences = nltk.sent_tokenize(text12)
+
 print(len(sentences))
+>>> 4
+
 print(sentences)
+>>> ['This is the first sentence.',
+ 'A gallon of milk in the U.S. costs $2.99.',
+ 'Is this the third sentence?',
+ 'Yes, it is!']
 ....
