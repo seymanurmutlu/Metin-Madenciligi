@@ -6,9 +6,9 @@ Bu repo, metin madenciliği ve metin işleme temellerini tanıtan kursun türkç
 
 
 
-[<img width="15%" src="docs/modules/ROOT/images/hafta-1.png">](/docs/modules/ROOT/pages)
+[<img width="15%" src="docs/modules/ROOT/images/hafta-1.png">](/01-Pythonda-Metin-ile-Çalışmak)
 </br>
-[<img width="15%" src="docs/modules/ROOT/images/hafta-2.png">](/02-Doğal-Dil-İşlemeye-Giriş/)
+[<img width="15%" src="docs/modules/ROOT/images/hafta-2.png">](/02-Doğal-Dil-İşlemeye-Giriş)
 </br>
 [<img width="15%" src="docs/modules/ROOT/images/hafta-3.png">](/weeks/3.hafta.md)
 </br>
